@@ -50,25 +50,43 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="/solutions"
+            href="/#services"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Solutions
+            Services
           </Link>
           <Link
-            href="/about"
+            href="/#about"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             About
           </Link>
           <Link
-            href="/news"
+            href="/#team"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Team
+          </Link>
+          <Link
+            href="/#news"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             News
           </Link>
           <Link
-            href="/contact"
+            href="/#security"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Security
+          </Link>
+          <Link
+            href="/#sponsor"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Sponsor
+          </Link>
+          <Link
+            href="/#contact"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Contact
@@ -121,28 +139,42 @@ export function Navbar() {
         <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b border-border p-6 shadow-xl animate-in slide-in-from-top-2">
           <nav className="flex flex-col gap-6 items-center">
             <Link
-              href="/solutions"
+              href="/#services"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
-              Solutions
+              Services
             </Link>
             <Link
-              href="/about"
+              href="/#about"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
               About
             </Link>
             <Link
-              href="/news"
+              href="/#team"
+              className="text-lg font-medium hover:text-primary transition-colors"
+              onClick={toggleMobileMenu}
+            >
+              Team
+            </Link>
+            <Link
+              href="/#news"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
               News
             </Link>
             <Link
-              href="/contact"
+              href="/#sponsor"
+              className="text-lg font-medium hover:text-primary transition-colors"
+              onClick={toggleMobileMenu}
+            >
+              Sponsor
+            </Link>
+            <Link
+              href="/#contact"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
