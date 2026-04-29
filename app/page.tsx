@@ -5,7 +5,9 @@ import { NetworkStatus } from "@/components/NetworkStatus"
 import { Partners } from "@/components/Partners"
 import { ApkRelease } from "@/components/ApkRelease"
 import { Features } from "@/components/Features"
+import { DeveloperSection } from "@/components/DeveloperSection"
 import { DetailedFeatures } from "@/components/DetailedFeatures"
+import { NetworkMap } from "@/components/NetworkMap"
 import { About } from "@/components/About"
 import { Team } from "@/components/Team"
 import { News } from "@/components/News"
@@ -24,7 +26,9 @@ export default function Page() {
       <Partners />
       <ApkRelease />
       <Features />
+      <DeveloperSection />
       <DetailedFeatures />
+      <NetworkMap />
       <About />
       <Team />
       <News />

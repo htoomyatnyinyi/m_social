@@ -11,6 +11,7 @@ export function Navbar() {
   const { setTheme, theme } = useTheme()
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [lang, setLang] = React.useState("EN")
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +25,9 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${isScrolled
-        ? "bg-background/80 backdrop-blur-md border-border"
-        : "bg-transparent border-transparent"
+      className={`fixed w-full z-50 transition-all duration-500 ${isScrolled
+        ? "top-0 bg-background/70 backdrop-blur-xl border-b shadow-md"
+        : "top-0 bg-transparent border-transparent"
         }`}
     >
       <div className="container mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
@@ -54,6 +55,12 @@ export function Navbar() {
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Services
+          </Link>
+          <Link
+            href="/#developers"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Developers
           </Link>
           <Link
             href="/#about"
@@ -95,13 +102,29 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-2 sm:gap-4">
+          {/* Language Toggle */}
+          <div className="hidden sm:flex items-center bg-muted/50 rounded-full p-1 border border-border/50">
+            <button
+              onClick={() => setLang("EN")}
+              className={`px-3 py-1.5 text-xs font-bold rounded-full transition-all ${lang === "EN" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLang("MM")}
+              className={`px-3 py-1.5 text-xs font-bold rounded-full transition-all ${lang === "MM" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              MM
+            </button>
+          </div>
+
           <Button
             variant="ghost"
             size="sm"
-            className="rounded-full px-3 text-xs font-bold"
-            onClick={() => {}}
+            className="sm:hidden rounded-full px-3 text-xs font-bold"
+            onClick={() => setLang(lang === "EN" ? "MM" : "EN")}
           >
-            MM
+            {lang}
           </Button>
 
           <Button
