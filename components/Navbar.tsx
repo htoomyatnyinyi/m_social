@@ -7,11 +7,13 @@ import { Moon, Sun, Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
+import { useLanguage } from "@/components/LanguageProvider"
+
 export function Navbar() {
   const { setTheme, theme } = useTheme()
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
-  const [lang, setLang] = React.useState("EN")
+  const { lang, setLang, t } = useLanguage()
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -54,55 +56,55 @@ export function Navbar() {
             href="/#services"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Services
+            {t("nav.services")}
           </Link>
           <Link
             href="/#developers"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Developers
+            {t("nav.developers")}
           </Link>
           <Link
             href="/#about"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            About
+            {t("nav.about")}
           </Link>
           <Link
             href="/#team"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Team
+            {t("nav.team")}
           </Link>
           <Link
             href="/#news"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            News
+            {t("nav.news")}
           </Link>
           <Link
             href="/#security"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Security
+            {t("nav.security")}
           </Link>
           <Link
             href="/#careers"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Careers
+            {t("nav.careers")}
           </Link>
           <Link
             href="/#sponsor"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Sponsor
+            {t("nav.sponsor")}
           </Link>
           <Link
             href="/#contact"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Contact
+            {t("nav.contact")}
           </Link>
         </nav>
 
@@ -144,9 +146,9 @@ export function Navbar() {
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
 
-          <Link href="/login" className="hidden md:block">
-            <Button className="rounded-full px-6">
-              Get Started
+          <Link href="/#sponsor" className="hidden md:block">
+            <Button className="rounded-full px-6 shadow-md hover:shadow-lg transition-all active:scale-95">
+              {t("nav.support")}
             </Button>
           </Link>
 
@@ -172,46 +174,46 @@ export function Navbar() {
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
-              Services
+              {t("nav.services")}
             </Link>
             <Link
               href="/#about"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
-              About
+              {t("nav.about")}
             </Link>
             <Link
               href="/#team"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
-              Team
+              {t("nav.team")}
             </Link>
             <Link
               href="/#news"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
-              News
+              {t("nav.news")}
             </Link>
             <Link
               href="/#sponsor"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
-              Sponsor
+              {t("nav.sponsor")}
             </Link>
             <Link
               href="/#contact"
               className="text-lg font-medium hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
             >
-              Contact
+              {t("nav.contact")}
             </Link>
-            <Link href="/login" className="w-full mt-4" onClick={toggleMobileMenu}>
-              <Button className="w-full rounded-full">
-                Get Started
+            <Link href="/#sponsor" className="w-full mt-4" onClick={toggleMobileMenu}>
+              <Button className="w-full rounded-full h-12 text-md">
+                {t("nav.support")}
               </Button>
             </Link>
           </nav>

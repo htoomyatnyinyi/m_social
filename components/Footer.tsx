@@ -1,10 +1,36 @@
 "use client"
 
+import * as React from "react"
 import Link from "next/link"
-import { Mail, MapPin, Phone } from "lucide-react"
-
+import { Mail, MapPin, Phone, Loader2, CheckCircle2 } from "lucide-react"
 
 export function Footer() {
+  const [email, setEmail] = React.useState("")
+  const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle")
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    setStatus("loading")
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+
+      if (res.ok) {
+        setStatus("success")
+        setEmail("")
+      } else {
+        setStatus("error")
+      }
+    } catch (err) {
+      setStatus("error")
+    }
+  }
+
   return (
     <footer className="border-t bg-muted/40 backdrop-blur-sm">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
@@ -21,18 +47,35 @@ export function Footer() {
               Empowering Myanmar's digital landscape with cutting-edge social connectivity and robust infrastructure.
             </p>
             
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-3" onSubmit={handleSubscribe}>
               <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Subscribe to updates</label>
-              <div className="flex gap-2">
-                <input 
-                  type="email" 
-                  placeholder="email@example.com"
-                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-primary"
-                />
-                <button className="bg-primary text-primary-foreground px-3 py-2 rounded-lg text-xs font-bold hover:brightness-110 transition-all">
-                  Join
-                </button>
-              </div>
+              
+              {status === "success" ? (
+                <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-500 bg-green-500/10 border border-green-500/20 rounded-lg px-3 py-2">
+                  <CheckCircle2 className="w-4 h-4" />
+                  Thanks for subscribing!
+                </div>
+              ) : (
+                <div className="flex gap-2 relative">
+                  <input 
+                    type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="email@example.com"
+                    disabled={status === "loading"}
+                    className="flex-1 bg-background border border-border rounded-lg px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
+                  />
+                  <button 
+                    disabled={status === "loading" || !email}
+                    className="bg-primary text-primary-foreground px-3 py-2 rounded-lg text-xs font-bold hover:brightness-110 transition-all disabled:opacity-50 flex items-center justify-center min-w-[60px]"
+                  >
+                    {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Join"}
+                  </button>
+                </div>
+              )}
+              {status === "error" && (
+                <p className="text-xs text-red-500">Something went wrong. Please try again.</p>
+              )}
             </form>
           </div>
 

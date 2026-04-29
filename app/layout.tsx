@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { LanguageProvider } from "@/components/LanguageProvider"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { cn } from "@/lib/utils";
@@ -32,11 +33,13 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
-          <Navbar />
-          <main className="min-h-screen flex flex-col pt-16">
-            {children}
-          </main>
-          <Footer />
+          <LanguageProvider>
+            <Navbar />
+            <main className="min-h-screen flex flex-col pt-16">
+              {children}
+            </main>
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
