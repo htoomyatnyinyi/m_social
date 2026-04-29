@@ -25,7 +25,7 @@ export function NetworkStatus() {
   }, [])
 
   return (
-    <section className="py-12 bg-black text-white overflow-hidden">
+    <section className="py-12 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex flex-wrap justify-between items-center gap-8">
           <div className="flex items-center gap-4 min-w-[200px]">

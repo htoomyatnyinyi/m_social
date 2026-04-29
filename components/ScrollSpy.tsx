@@ -13,6 +13,7 @@ const sections = [
   { id: "team", label: "Team" },
   { id: "news", label: "News" },
   { id: "security", label: "Security" },
+  { id: "careers", label: "Join Us" },
   { id: "sponsor", label: "Sponsor" },
   { id: "contact", label: "Contact" },
 ]

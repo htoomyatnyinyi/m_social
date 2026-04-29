@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export function Security() {
   return (
-    <section id="security" className="py-24 bg-zinc-950 text-white overflow-hidden relative">
+    <section id="security" className="py-24 overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary to-transparent" />
@@ -129,7 +129,7 @@ export function Security() {
             </h3>
             <div className="relative space-y-8 ml-4">
               <div className="absolute left-[-16px] top-2 bottom-2 w-px bg-primary/20" />
-              
+
               {[
                 { title: "Verification", desc: "Our security team replicates and validates the vulnerability report." },
                 { title: "Patching", desc: "Developers roll out a hotfix to our isolated staging environment." },

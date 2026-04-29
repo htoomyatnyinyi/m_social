@@ -4,12 +4,13 @@ const nodes = [
   { city: "Yangon", status: "Primary", latency: "5ms", x: "45%", y: "75%" },
   { city: "Mandalay", status: "Secondary", latency: "12ms", x: "50%", y: "45%" },
   { city: "Naypyidaw", status: "Edge", latency: "8ms", x: "48%", y: "60%" },
-  { city: "Taunggyi", status: "Edge", latency: "15ms", x: "60%", y: "55%" },
+  // { city: "Taunggyi", status: "Edge", latency: "15ms", x: "60%", y: "55%" },
+  { city: "Mawlamyine", status: "Primary", latency: "13ms", x: "50%", y: "90%" }
 ]
 
 export function NetworkMap() {
   return (
-    <section id="network" className="py-24 bg-zinc-950 text-white overflow-hidden relative">
+    <section id="network" className="py-24  overflow-hidden relative">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -28,7 +29,7 @@ export function NetworkMap() {
               We operate a sovereign cloud network across Myanmar. By placing our server nodes directly in key cities, we bypass international bottlenecks and deliver ultra-low latency for all "m" ecosystem services.
             </p>
 
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-8 ">
               <div className="space-y-3">
                 <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary">
                   <Zap className="w-5 h-5" />

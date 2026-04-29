@@ -12,6 +12,7 @@ import { About } from "@/components/About"
 import { Team } from "@/components/Team"
 import { News } from "@/components/News"
 import { Security } from "@/components/Security"
+import { Careers } from "@/components/Careers"
 import { Sponsor } from "@/components/Sponsor"
 import { Faq } from "@/components/Faq"
 import { Contact } from "@/components/Contact"
@@ -33,6 +34,7 @@ export default function Page() {
       <Team />
       <News />
       <Security />
+      <Careers />
       <Sponsor />
       <Faq />
       <Contact />

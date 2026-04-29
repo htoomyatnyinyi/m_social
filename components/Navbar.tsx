@@ -87,6 +87,12 @@ export function Navbar() {
             Security
           </Link>
           <Link
+            href="/#careers"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Careers
+          </Link>
+          <Link
             href="/#sponsor"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
