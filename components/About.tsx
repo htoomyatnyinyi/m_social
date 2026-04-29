@@ -1,7 +1,12 @@
+"use client"
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/components/LanguageProvider"
 
 export function About() {
+  const { t } = useLanguage()
+
   return (
     <section id="about" className="py-24 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
@@ -10,32 +15,28 @@ export function About() {
           {/* Text Content */}
           <div className="order-2 lg:order-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              About social_ltd
+              {t("about.badge")}
             </div>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-tight">
-              Bridging the gap in <br/>
-              Myanmar's digital era.
+              {t("about.title1")} <br/>
+              {t("about.title2")}
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Founded in Yangon, <strong className="text-foreground">social_ltd</strong> was born from a vision to create digital platforms that truly resonate with the local culture. Our brand <strong className="text-foreground">m</strong> represents Myanmar's forward momentum.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              We don't just build apps; we build infrastructure. Our interconnected ecosystem comprising the social app, analytics dashboard, and backend servers work in unison to provide a world-class experience.
-            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: t("about.p1") }} />
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8" dangerouslySetInnerHTML={{ __html: t("about.p2") }} />
             
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div className="border-l-2 border-primary pl-4">
                 <div className="text-3xl font-bold mb-1">100%</div>
-                <div className="text-sm text-muted-foreground">Locally Developed</div>
+                <div className="text-sm text-muted-foreground">{t("about.metrics.local")}</div>
               </div>
               <div className="border-l-2 border-primary pl-4">
                 <div className="text-3xl font-bold mb-1">24/7</div>
-                <div className="text-sm text-muted-foreground">Server Monitoring</div>
+                <div className="text-sm text-muted-foreground">{t("about.metrics.monitoring")}</div>
               </div>
             </div>
 
             <Button size="lg" className="rounded-full">
-              Read Our Full Story
+              {t("about.cta")}
             </Button>
           </div>
 
@@ -63,8 +64,8 @@ export function About() {
                   <div className="absolute -right-6 bottom-12 bg-background border shadow-xl rounded-2xl p-4 flex items-center gap-4 z-20 animate-bounce-slow">
                     <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-bold">✓</div>
                     <div>
-                      <div className="text-sm font-bold">Systems Online</div>
-                      <div className="text-xs text-muted-foreground">All servers active</div>
+                      <div className="text-sm font-bold">{t("about.status.title")}</div>
+                      <div className="text-xs text-muted-foreground">{t("about.status.desc")}</div>
                     </div>
                   </div>
                 </div>

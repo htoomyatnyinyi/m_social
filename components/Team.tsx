@@ -2,7 +2,7 @@
 
 const team = [
   {
-    name: "Htoo Myat Nyin Yi",
+    name: "Htoo Myat Nyi Nyi",
     role: "Founder & Lead Architect",
     bio: "Visionary behind the m ecosystem, specializing in distributed systems and Myanmar digital infrastructure.",
     image: "/team/htoo.jpg", // Placeholder

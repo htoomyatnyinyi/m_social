@@ -6,7 +6,16 @@ import { cn } from "@/lib/utils"
 const sections = [
   { id: "hero", label: "Home" },
   { id: "services", label: "Services" },
+  { id: "developers", label: "Devs" },
+  { id: "detailed", label: "Details" },
+  { id: "network", label: "Nodes" },
+  { id: "about", label: "About" },
+  { id: "team", label: "Team" },
   { id: "news", label: "News" },
+  { id: "security", label: "Security" },
+  { id: "careers", label: "Join Us" },
+  { id: "sponsor", label: "Sponsor" },
+  { id: "contact", label: "Contact" },
 ]
 
 export function ScrollSpy() {

@@ -1,10 +1,42 @@
 "use client"
 
+import * as React from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, User, Lock } from "lucide-react"
+import { ArrowLeft, User, Lock, Loader2, AlertCircle } from "lucide-react"
 
 export default function LoginPage() {
+  const router = useRouter()
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [error, setError] = React.useState("")
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError("")
+
+    if (!email || !password) {
+      setError("Please enter both email and password.")
+      return
+    }
+
+    setIsLoading(true)
+
+    // Simulate network request
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    // Mock authentication check
+    if (email.includes("@") && password.length >= 6) {
+      // Success - redirect to dashboard
+      router.push("/dashboard")
+    } else {
+      setIsLoading(false)
+      setError("Invalid credentials. Password must be at least 6 characters.")
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Visual Side */}
@@ -39,7 +71,14 @@ export default function LoginPage() {
             <p className="text-muted-foreground">Enter your details to access your account.</p>
           </div>
 
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6" onSubmit={handleLogin}>
+            {error && (
+              <div className="bg-destructive/10 text-destructive text-sm px-4 py-3 rounded-xl flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                {error}
+              </div>
+            )}
+            
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-1.5" htmlFor="email">Email</label>
@@ -48,8 +87,11 @@ export default function LoginPage() {
                   <input 
                     id="email"
                     type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com.mm"
-                    className="w-full bg-background border border-input rounded-xl pl-10 pr-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    disabled={isLoading}
+                    className="w-full bg-background border border-input rounded-xl pl-10 pr-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -57,25 +99,33 @@ export default function LoginPage() {
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="block text-sm font-medium" htmlFor="password">Password</label>
-                  <Link href="#" className="text-xs text-primary hover:underline">Forgot password?</Link>
+                  <Link href="#" className="text-xs text-primary hover:underline disabled:opacity-50">Forgot password?</Link>
                 </div>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <input 
                     id="password"
                     type="password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-background border border-input rounded-xl pl-10 pr-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    disabled={isLoading}
+                    className="w-full bg-background border border-input rounded-xl pl-10 pr-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                   />
                 </div>
               </div>
             </div>
 
-            <Link href="/dashboard" className="block">
-              <Button className="w-full h-12 rounded-xl text-md font-medium">
-                Sign In
-              </Button>
-            </Link>
+            <Button type="submit" disabled={isLoading} className="w-full h-12 rounded-xl text-md font-medium">
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Authenticating...
+                </>
+              ) : (
+                "Sign In"
+              )}
+            </Button>
           </form>
 
           <p className="mt-8 text-center text-sm text-muted-foreground">
