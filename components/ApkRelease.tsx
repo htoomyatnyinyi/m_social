@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Download, Smartphone, AlertCircle } from "lucide-react"
 import { useLanguage } from "@/components/LanguageProvider"
+import { SITE_CONFIG } from "@/lib/config"
 
 export function ApkRelease() {
   const { t } = useLanguage()
@@ -27,7 +28,11 @@ export function ApkRelease() {
             </p>
 
             <div className="flex flex-col items-center gap-4 sm:flex-row">
-              <a href="/m.apk" download className="w-full sm:w-auto">
+              <a
+                href={SITE_CONFIG.apkDownloadUrl}
+                download
+                className="w-full sm:w-auto"
+              >
                 <Button
                   size="lg"
                   className="text-md group h-12 w-full gap-2 rounded-xl shadow-md shadow-primary/20 sm:w-auto"

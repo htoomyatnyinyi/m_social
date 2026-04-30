@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { Mail, MapPin, Phone, Loader2, CheckCircle2 } from "lucide-react"
 import { useLanguage } from "@/components/LanguageProvider"
+import { SITE_CONFIG } from "@/lib/config"
 
 export function Footer() {
   const { t } = useLanguage()
@@ -168,11 +169,11 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 shrink-0 text-primary" />
-                <span>support@m.com</span>
+                <span>{SITE_CONFIG.links.support}</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
-                <span>+95 9792400340</span>
+                <span>{SITE_CONFIG.links.phone}</span>
               </li>
             </ul>
           </div>
