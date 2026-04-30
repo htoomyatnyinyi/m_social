@@ -21,23 +21,23 @@ export default function Page() {
   return (
     <div className="flex flex-col">
       <ScrollSpy />
-      <LiveSupport />
+      {/* <LiveSupport /> */}
       <Hero />
       <NetworkStatus />
-      <Partners />
+      {/* <Partners /> */}
       <ApkRelease />
-      <Features />
-      <DeveloperSection />
-      <DetailedFeatures />
-      <NetworkMap />
+      {/* <Features /> */}
+      {/* <DeveloperSection /> */}
+      {/* <DetailedFeatures /> */}
+      {/* <NetworkMap /> */}
       <About />
-      <Team />
-      <News />
+      {/* <Team /> */}
+      {/* <News /> */}
       <Security />
-      <Careers />
-      <Sponsor />
+      {/* <Careers /> */}
+      {/* <Sponsor /> */}
       <Faq />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   )
 }

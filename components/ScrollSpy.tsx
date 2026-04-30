@@ -5,17 +5,18 @@ import { cn } from "@/lib/utils"
 
 const sections = [
   { id: "hero", label: "Home" },
-  { id: "services", label: "Services" },
-  { id: "developers", label: "Devs" },
-  { id: "detailed", label: "Details" },
-  { id: "network", label: "Nodes" },
+  // { id: "services", label: "Services" },
+  // { id: "developers", label: "Devs" },
+  // { id: "detailed", label: "Details" },
+  // { id: "network", label: "Nodes" },
   { id: "about", label: "About" },
-  { id: "team", label: "Team" },
-  { id: "news", label: "News" },
+  // { id: "team", label: "Team" },
+  // { id: "news", label: "News" },
   { id: "security", label: "Security" },
-  { id: "careers", label: "Join Us" },
-  { id: "sponsor", label: "Sponsor" },
-  { id: "contact", label: "Contact" },
+  // { id: "careers", label: "Join Us" },
+  // { id: "sponsor", label: "Sponsor" },
+  { id: "faq", label: "FAQ" },
+  // { id: "contact", label: "Contact" },
 ]
 
 export function ScrollSpy() {
@@ -47,14 +48,14 @@ export function ScrollSpy() {
   }, [])
 
   return (
-    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-6">
+    <div className="fixed top-1/2 right-8 z-40 hidden -translate-y-1/2 flex-col gap-6 xl:flex">
       {sections.map((section) => {
         const isActive = activeSection === section.id
         return (
           <a
             key={section.id}
             href={`#${section.id}`}
-            className="group flex items-center gap-4 justify-end outline-none"
+            className="group flex items-center justify-end gap-4 outline-none"
             onClick={(e) => {
               e.preventDefault()
               document.getElementById(section.id)?.scrollIntoView({
@@ -62,22 +63,24 @@ export function ScrollSpy() {
               })
             }}
           >
-            <span 
+            <span
               className={cn(
-                "text-xs font-bold uppercase tracking-widest transition-all duration-300 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0",
-                isActive ? "opacity-100 translate-x-0 text-primary" : "text-muted-foreground"
+                "-translate-x-4 text-xs font-bold tracking-widest uppercase opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100",
+                isActive
+                  ? "translate-x-0 text-primary opacity-100"
+                  : "text-muted-foreground"
               )}
             >
               {section.label}
             </span>
             <div className="relative flex items-center justify-center">
-              <div 
+              <div
                 className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300",
-                  isActive 
-                    ? "bg-primary scale-125 ring-4 ring-primary/20" 
+                  "h-2 w-2 rounded-full transition-all duration-300",
+                  isActive
+                    ? "scale-125 bg-primary ring-4 ring-primary/20"
                     : "bg-muted-foreground/30 group-hover:bg-muted-foreground/60"
-                )} 
+                )}
               />
             </div>
           </a>

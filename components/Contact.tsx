@@ -5,71 +5,102 @@ import { Send } from "lucide-react"
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-muted/30">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 skew-x-12 translate-x-32 -z-10" />
-      
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-muted/30 py-24"
+    >
+      <div className="absolute top-0 right-0 -z-10 h-full w-1/2 translate-x-32 skew-x-12 bg-primary/5" />
+
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto bg-background border border-border/50 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-border/50 bg-background p-8 shadow-2xl md:p-12">
           {/* Decorative blur */}
-          <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-[50px]" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+          <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-primary/20 blur-[50px]" />
+
+          <div className="relative z-10 grid grid-cols-1 gap-12 md:grid-cols-2">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
                 Let's build the future together.
               </h2>
-              <p className="text-muted-foreground mb-8">
-                Interested in our social ecosystem or enterprise APIs? Reach out to our team in Yangon. We're always looking for strategic partnerships.
+              <p className="mb-8 text-muted-foreground">
+                Interested in our social ecosystem or enterprise APIs? Reach out
+                to our team in Yangon. We're always looking for strategic
+                partnerships.
               </p>
-              
+
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-semibold mb-1">Partnerships</h4>
-                  <p className="text-muted-foreground text-sm">partners@social-ltd.com.mm</p>
+                  <h4 className="mb-1 font-semibold">Partnerships</h4>
+                  <p className="text-sm text-muted-foreground">
+                    partners@social-ltd.com.mm
+                  </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Careers</h4>
-                  <p className="text-muted-foreground text-sm">join@social-ltd.com.mm</p>
+                  <h4 className="mb-1 font-semibold">Careers</h4>
+                  <p className="text-sm text-muted-foreground">
+                    join@social-ltd.com.mm
+                  </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Office Location</h4>
-                  <p className="text-muted-foreground text-sm">Yangon Innovation Center<br/>Myanmar</p>
+                  <h4 className="mb-1 font-semibold">Office Location</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Yangon Innovation Center
+                    <br />
+                    Myanmar
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+            <div className="rounded-2xl border border-border/50 bg-muted/30 p-6">
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1.5">Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    className="w-full bg-background border border-input rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="John Doe"
+                  <label
+                    htmlFor="name"
+                    className="mb-1.5 block text-sm font-medium"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm transition-all outline-none focus:ring-2 focus:ring-primary/50"
+                    placeholder="Please enter your name..."
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1.5">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    className="w-full bg-background border border-input rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="john@example.com"
+                  <label
+                    htmlFor="email"
+                    className="mb-1.5 block text-sm font-medium"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm transition-all outline-none focus:ring-2 focus:ring-primary/50"
+                    placeholder="Please enter your email..."
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1.5">Message</label>
-                  <textarea 
-                    id="message" 
+                  <label
+                    htmlFor="message"
+                    className="mb-1.5 block text-sm font-medium"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
                     rows={4}
-                    className="w-full bg-background border border-input rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                    placeholder="How can we help?"
+                    className="w-full resize-none rounded-lg border border-input bg-background px-4 py-3 text-sm transition-all outline-none focus:ring-2 focus:ring-primary/50"
+                    placeholder="Please enter your message..."
                   />
                 </div>
-                <Button className="w-full h-12 rounded-xl text-md font-medium group">
+                <Button
+                  type="submit"
+                  className="text-md group h-12 w-full rounded-xl font-medium"
+                >
                   Send Message
-                  <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Button>
               </form>
             </div>
