@@ -3,10 +3,14 @@
 import * as React from "react"
 import Link from "next/link"
 import { Mail, MapPin, Phone, Loader2, CheckCircle2 } from "lucide-react"
+import { useLanguage } from "@/components/LanguageProvider"
 
 export function Footer() {
+  const { t } = useLanguage()
   const [email, setEmail] = React.useState("")
-  const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle")
+  const [status, setStatus] = React.useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle")
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -33,74 +37,91 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-muted/40 backdrop-blur-sm">
-      <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="container mx-auto px-6 py-12 md:py-16 lg:px-12">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           {/* Brand & Newsletter */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 group mb-6">
-              <div className="w-8 h-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">
+            <Link
+              href="/"
+              className="group mb-6 flex items-center gap-2"
+              aria-label="m Myanmar Social Home"
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-xl font-bold text-primary-foreground">
                 m
               </div>
-              <span className="font-semibold text-xl tracking-tight">myanmar social</span>
+              <span className="text-xl font-semibold tracking-tight">
+                myanmar social
+              </span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-8">
-              Empowering Myanmar's digital landscape with cutting-edge social connectivity and robust infrastructure.
+            <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
+              {t("footer.desc")}
             </p>
-            
+
             <form className="space-y-3" onSubmit={handleSubscribe}>
-              <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Subscribe to updates</label>
-              
+              <label
+                htmlFor="newsletter-email"
+                className="text-xs font-bold tracking-widest text-muted-foreground uppercase"
+              >
+                {t("footer.newsletter.title")}
+              </label>
+
               {status === "success" ? (
-                <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-500 bg-green-500/10 border border-green-500/20 rounded-lg px-3 py-2">
-                  <CheckCircle2 className="w-4 h-4" />
-                  Thanks for subscribing!
+                <div className="flex items-center gap-2 rounded-lg border border-green-500/20 bg-green-500/10 px-3 py-2 text-sm text-green-600 dark:text-green-500">
+                  <CheckCircle2 className="h-4 w-4" />
+                  {t("footer.newsletter.success")}
                 </div>
               ) : (
-                <div className="flex gap-2 relative">
-                  <input 
-                    type="email" 
+                <div className="relative flex gap-2">
+                  <input
+                    id="newsletter-email"
+                    type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="email@example.com"
+                    placeholder={t("footer.newsletter.placeholder")}
                     disabled={status === "loading"}
-                    className="flex-1 bg-background border border-border rounded-lg px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
+                    className="flex-1 rounded-lg border border-border bg-background px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
+                    aria-label="Email for newsletter"
                   />
-                  <button 
+                  <button
+                    type="submit"
                     disabled={status === "loading" || !email}
-                    className="bg-primary text-primary-foreground px-3 py-2 rounded-lg text-xs font-bold hover:brightness-110 transition-all disabled:opacity-50 flex items-center justify-center min-w-[60px]"
+                    className="flex min-w-[60px] items-center justify-center rounded-lg bg-primary px-3 py-2 text-xs font-bold text-primary-foreground transition-all hover:brightness-110 disabled:opacity-50"
+                    aria-label="Join newsletter"
                   >
-                    {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Join"}
+                    {status === "loading" ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      t("footer.newsletter.button")
+                    )}
                   </button>
                 </div>
               )}
               {status === "error" && (
-                <p className="text-xs text-red-500">Something went wrong. Please try again.</p>
+                <p className="text-xs text-red-500">
+                  {t("footer.newsletter.error")}
+                </p>
               )}
             </form>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold mb-6">Solutions</h3>
+            <h3 className="mb-6 font-semibold">{t("footer.solutions.title")}</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Social App Ecosystem
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {t("footer.solutions.app")}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Analytics Dashboard
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Backend Infrastructure
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  API Integration
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {t("footer.solutions.analytics")}
                 </Link>
               </li>
             </ul>
@@ -108,26 +129,30 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold mb-6">Company</h3>
+            <h3 className="mb-6 font-semibold">{t("footer.company.title")}</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  About Us
+                <Link
+                  href="#about"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {t("footer.company.about")}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Careers (Yangon)
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {t("footer.company.privacy")}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Terms of Service
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {t("footer.company.terms")}
                 </Link>
               </li>
             </ul>
@@ -135,48 +160,30 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold mb-6">Connect</h3>
+            <h3 className="mb-6 font-semibold">{t("footer.connect.title")}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 mt-0.5 text-primary shrink-0" />
-                <span>Yangon, Myanmar</span>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>{t("footer.connect.myanmar")}</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Mail className="w-4 h-4 text-primary shrink-0" />
-                <span>hello@social-ltd.com.mm</span>
+                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                <span>support@m.com</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary shrink-0" />
-                <span>+95 1 234 567</span>
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                <span>+95 9792400340</span>
               </li>
             </ul>
-            <div className="flex items-center gap-4 mt-6">
-              {/* <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook className="w-5 h-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Instagram className="w-5 h-5" />
-                <span className="sr-only">Instagram</span>
-              </Link> */}
-              {/* <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="w-5 h-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Link> */}
-            </div>
           </div>
         </div>
 
-        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} social_ltd (Brand 'm'). All rights reserved.
+            {t("footer.copyright").replace("{year}", new Date().getFullYear().toString())}
           </p>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>Made with ❤️ in Myanmar</span>
+            <span>{t("footer.madeWith")}</span>
           </div>
         </div>
       </div>

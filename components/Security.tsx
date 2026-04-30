@@ -1,120 +1,157 @@
 "use client"
 
+import * as React from "react"
 import { ShieldAlert, Lock, Terminal, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/components/LanguageProvider"
 
 export function Security() {
+  const { t } = useLanguage()
+
   return (
-    <section id="security" className="py-24 overflow-hidden relative">
+    <section id="security" className="relative overflow-hidden py-24">
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary to-transparent" />
-        <div className="absolute top-0 left-2/4 w-px h-full bg-gradient-to-b from-transparent via-primary to-transparent" />
-        <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-primary to-transparent" />
+      <div className="pointer-events-none absolute top-0 left-0 h-full w-full opacity-10">
+        <div className="absolute top-0 left-1/4 h-full w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
+        <div className="absolute top-0 left-2/4 h-full w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
+        <div className="absolute top-0 left-3/4 h-full w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6 border border-primary/30">
-              <ShieldAlert className="w-4 h-4" />
-              Cybersecurity First
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/20 px-3 py-1 text-xs font-bold tracking-widest text-primary uppercase">
+              <ShieldAlert className="h-4 w-4" />
+              {t("security.badge")}
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-tight">
-              Welcome, Pentesters. <br />
-              Help us secure Myanmar.
+            <h2 className="mb-6 text-3xl leading-tight font-bold tracking-tight md:text-5xl">
+              {t("security.title1")} <br />
+              {t("security.title2")}
             </h2>
-            <p className="text-lg text-zinc-400 leading-relaxed mb-8">
-              At <span className="text-white font-semibold">social_ltd</span>, user privacy and data security are our highest priorities. We recognize the vital role that security researchers play in keeping the ecosystem safe.
-            </p>
+            <p
+              className="mb-8 text-lg leading-relaxed text-zinc-400"
+              dangerouslySetInnerHTML={{ __html: t("security.desc") }}
+            />
 
-            <div className="space-y-6 mb-10">
-              <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                <Terminal className="w-6 h-6 text-primary shrink-0" />
+            <div className="mb-10 space-y-6">
+              <div className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition-colors hover:bg-white/10">
+                <Terminal className="h-6 w-6 shrink-0 text-primary" />
                 <div>
-                  <h4 className="font-bold mb-1">Responsible Disclosure</h4>
-                  <p className="text-sm text-zinc-500 leading-relaxed">
-                    Found a vulnerability? We invite you to report it through our responsible disclosure program. We promise to review all submissions within 48 hours.
+                  <h4 className="mb-1 font-bold">
+                    {t("security.disclosure.title")}
+                  </h4>
+                  <p className="text-sm leading-relaxed text-zinc-500">
+                    {t("security.disclosure.desc")}
                   </p>
                 </div>
               </div>
-              <div className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                <Heart className="w-6 h-6 text-red-500 shrink-0" />
+              <div className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition-colors hover:bg-white/10">
+                <Heart className="h-6 w-6 shrink-0 text-red-500" />
                 <div>
-                  <h4 className="font-bold mb-1">Hall of Fame</h4>
-                  <p className="text-sm text-zinc-500 leading-relaxed">
-                    Researchers who help us secure our infrastructure will be permanently recognized on our official Hall of Fame.
+                  <h4 className="mb-1 font-bold">
+                    {t("security.halloffame.title")}
+                  </h4>
+                  <p className="text-sm leading-relaxed text-zinc-500">
+                    {t("security.halloffame.desc")}
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-full px-8 bg-primary hover:brightness-110">
-                View Security Policy
-              </Button>
-              <Button variant="outline" size="lg" className="rounded-full px-8 border-white/20 hover:bg-white/5 text-white">
-                Submit a Report
-              </Button>
             </div>
           </div>
 
           <div className="relative">
-            <div className="aspect-square w-full max-w-md mx-auto bg-gradient-to-br from-zinc-900 to-black border border-white/10 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden group">
+            <div className="group relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-zinc-900 to-black p-8 shadow-2xl">
               {/* Animated scanning effect */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-primary/40 animate-scan z-20" />
+              <div className="animate-scan absolute top-0 left-0 z-20 h-1 w-full bg-primary/40" />
 
-              <div className="h-full flex flex-col font-mono text-[10px] md:text-xs text-primary/80 overflow-hidden">
+              <div className="flex h-full flex-col overflow-hidden font-mono text-[10px] text-primary/80 md:text-xs">
                 <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
-                  <span className="text-white font-bold tracking-widest flex items-center gap-2">
-                    <Lock className="w-4 h-4" />
-                    ENCRYPTED_CORE_SEC
+                  <span className="flex items-center gap-2 font-bold tracking-widest text-white">
+                    <Lock className="h-4 w-4" />
+                    {t("security.terminal.header")}
                   </span>
-                  <span className="text-zinc-500 uppercase">Status: Vigilant</span>
+                  <span className="text-zinc-500 uppercase">
+                    {t("security.terminal.status")}
+                  </span>
                 </div>
 
-                <div className="space-y-2 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <p className="text-zinc-500">{`[SYSTEM] Initializing security audit...`}</p>
-                  <p>{`[INFO] Scanning endpoint: /api/v1/auth/verify`}</p>
-                  <p className="text-green-500">{`[OK] End-to-end encryption active`}</p>
-                  <p className="text-yellow-500">{`[WARN] 12 unauthorized attempts blocked from 103.x.x.x`}</p>
-                  <p>{`[INFO] Integrity check: [####################] 100%`}</p>
-                  <p className="text-blue-400 mt-4">{`// We welcome researchers to test our `}</p>
-                  <p className="text-blue-400">{`// defenses and help protect Myanmar's`}</p>
-                  <p className="text-blue-400">{`// digital infrastructure.`}</p>
-                  <p className="mt-4 text-white">{`$ contact: security@social-ltd.com.mm`}</p>
+                <div className="space-y-2 transition-opacity group-hover:opacity-100">
+                  <p className="text-zinc-500">{t("security.terminal.sys")}</p>
+                  <p>{t("security.terminal.info1")}</p>
+                  <p className="text-green-500">{t("security.terminal.ok")}</p>
+                  <p className="text-yellow-500">
+                    {t("security.terminal.warn")}
+                  </p>
+                  <p>{t("security.terminal.info2")}</p>
+                  <p className="mt-4 text-blue-400">
+                    {t("security.terminal.comment1")}
+                  </p>
+                  <p className="text-blue-400">
+                    {t("security.terminal.comment2")}
+                  </p>
+                  <p className="text-blue-400">
+                    {t("security.terminal.comment3")}
+                  </p>
+                  <p className="mt-4 text-white">
+                    {t("security.terminal.contact")}
+                  </p>
                 </div>
               </div>
 
               {/* Decorative shield icon in background */}
-              <ShieldAlert className="absolute -bottom-10 -right-10 w-48 h-48 opacity-5 text-white pointer-events-none" />
+              <ShieldAlert className="pointer-events-none absolute -right-10 -bottom-10 h-48 w-48 text-white opacity-5" />
             </div>
           </div>
         </div>
 
         {/* Security Testing Queue & Remediation */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-16">
+        <div className="mt-24 grid grid-cols-1 gap-12 border-t border-white/10 pt-16 md:grid-cols-2">
           {/* Security Testing Queue */}
           <div>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <Terminal className="w-5 h-5 text-primary" />
-              Target Testing Scope (Queue)
+            <h3 className="mb-6 flex items-center gap-2 text-xl font-bold">
+              <Terminal className="h-5 w-5 text-primary" />
+              {t("security.scope.title")}
             </h3>
             <div className="space-y-4">
               {[
-                { target: "API Auth Endpoints", priority: "Critical", status: "Active" },
-                { target: "Data Encryption Layer", priority: "High", status: "Active" },
-                { target: "User Metadata Storage", priority: "Medium", status: "Monitoring" },
-                { target: "Sponsorship Payment Gateways", priority: "High", status: "Active" },
+                {
+                  target: t("security.scope.target1"),
+                  priority: "Critical",
+                  status: t("security.scope.status.active"),
+                },
+                {
+                  target: t("security.scope.target2"),
+                  priority: "High",
+                  status: t("security.scope.status.active"),
+                },
+                {
+                  target: t("security.scope.target3"),
+                  priority: "Medium",
+                  status: t("security.scope.status.monitoring"),
+                },
+                {
+                  target: t("security.scope.target4"),
+                  priority: "High",
+                  status: t("security.scope.status.active"),
+                },
               ].map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
+                <div
+                  key={i}
+                  className="flex items-center justify-between rounded-xl border border-white/5 bg-white/5 p-4"
+                >
                   <div>
                     <div className="text-sm font-semibold">{item.target}</div>
-                    <div className="text-[10px] text-zinc-500 uppercase tracking-widest mt-1">Priority: {item.priority}</div>
+                    <div className="mt-1 text-[10px] tracking-widest text-zinc-500 uppercase">
+                      {t("security.scope.priority")}: {item.priority}
+                    </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`w-1.5 h-1.5 rounded-full ${item.status === "Active" ? "bg-green-500 animate-pulse" : "bg-blue-500"}`} />
-                    <span className="text-[10px] text-zinc-400 font-mono uppercase">{item.status}</span>
+                    <span
+                      className={`h-1.5 w-1.5 rounded-full ${item.status === t("security.scope.status.active") ? "animate-pulse bg-green-500" : "bg-blue-500"}`}
+                    />
+                    <span className="font-mono text-[10px] text-zinc-400 uppercase">
+                      {item.status}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -123,23 +160,39 @@ export function Security() {
 
           {/* Remediation Process */}
           <div>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <ShieldAlert className="w-5 h-5 text-primary" />
-              Remediation & Fix Process
+            <h3 className="mb-6 flex items-center gap-2 text-xl font-bold">
+              <ShieldAlert className="h-5 w-5 text-primary" />
+              {t("security.remediation.title")}
             </h3>
-            <div className="relative space-y-8 ml-4">
-              <div className="absolute left-[-16px] top-2 bottom-2 w-px bg-primary/20" />
+            <div className="relative ml-4 space-y-8">
+              <div className="absolute top-2 bottom-2 left-[-16px] w-px bg-primary/20" />
 
               {[
-                { title: "Verification", desc: "Our security team replicates and validates the vulnerability report." },
-                { title: "Patching", desc: "Developers roll out a hotfix to our isolated staging environment." },
-                { title: "Audit", desc: "Independent security review to ensure the fix doesn't create regressions." },
-                { title: "Deployment", desc: "Zero-downtime deployment to all Myanmar server nodes." },
+                {
+                  title: t("security.remediation.step1.title"),
+                  desc: t("security.remediation.step1.desc"),
+                },
+                {
+                  title: t("security.remediation.step2.title"),
+                  desc: t("security.remediation.step2.desc"),
+                },
+                {
+                  title: t("security.remediation.step3.title"),
+                  desc: t("security.remediation.step3.desc"),
+                },
+                {
+                  title: t("security.remediation.step4.title"),
+                  desc: t("security.remediation.step4.desc"),
+                },
               ].map((step, i) => (
                 <div key={i} className="relative pl-4">
-                  <div className="absolute left-[-20px] top-1.5 w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-                  <h4 className="text-sm font-bold text-white mb-1">{step.title}</h4>
-                  <p className="text-xs text-zinc-500 leading-relaxed">{step.desc}</p>
+                  <div className="absolute top-1.5 left-[-20px] h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                  <h4 className="mb-1 text-sm font-bold text-white">
+                    {step.title}
+                  </h4>
+                  <p className="text-xs leading-relaxed text-zinc-500">
+                    {step.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -149,15 +202,41 @@ export function Security() {
 
       <style jsx>{`
         @keyframes scan {
-          0% { top: 0%; opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { top: 100%; opacity: 0; }
+          0% {
+            top: 0%;
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            top: 100%;
+            opacity: 0;
+          }
         }
         .animate-scan {
           animation: scan 4s linear infinite;
         }
       `}</style>
+
+      {/* <div className="flex flex-wrap gap-4">
+              <Button
+                size="lg"
+                className="rounded-full bg-primary px-8 hover:brightness-110"
+              >
+                View Security Policy
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-full border-white/20 px-8 text-white hover:bg-white/5"
+              >
+                Submit a Report
+              </Button>
+            </div> */}
     </section>
   )
 }
