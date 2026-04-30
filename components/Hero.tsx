@@ -44,11 +44,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex animate-in flex-col items-center justify-center gap-4 delay-300 duration-1000 slide-in-from-bottom-10 fade-in sm:flex-row">
-            <a
-              href="/m-social-v0.2-beta.apk"
-              download
-              className="w-full sm:w-auto"
-            >
+            <a href="/m.apk" download className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="text-md h-14 w-full gap-2 rounded-full px-8 shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30 sm:w-auto"
