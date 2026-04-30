@@ -27,11 +27,7 @@ export function ApkRelease() {
             </p>
 
             <div className="flex flex-col items-center gap-4 sm:flex-row">
-              <a
-                href="/m-social-v0.2-beta.apk"
-                download
-                className="w-full sm:w-auto"
-              >
+              <a href="/m.apk" download className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   className="text-md group h-12 w-full gap-2 rounded-xl shadow-md shadow-primary/20 sm:w-auto"
