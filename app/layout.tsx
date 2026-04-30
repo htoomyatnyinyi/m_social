@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/components/LanguageProvider"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { cn } from "@/lib/utils"
+import { Analytics } from "@vercel/analytics/next"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -69,6 +70,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <LanguageProvider>
+            <Analytics />
             <Navbar />
             <main className="flex min-h-screen flex-col pt-16">{children}</main>
             <Footer />
